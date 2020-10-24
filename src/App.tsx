@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import Checkbox from "@material-ui/core/Checkbox";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
 
-function App() {
+const useStyles = makeStyles(() =>
+  createStyles({
+    root: {
+      marginTop: "1rem",
+    },
+    list: {
+      width: "100%",
+    },
+    checkout: {
+      marginTop: "2rem",
+    },
+  })
+);
+
+function CheckoutApp() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Grid container>
+      <Grid item md={8}>
+        <List className={classes.root}>
+          <ListItem role={undefined} dense button>
+            <ListItemIcon>
+              <Checkbox edge="start" tabIndex={-1} disableRipple />
+            </ListItemIcon>
+            <ListItemText primary={"Credit card"} />
+          </ListItem>
+          <ListItem role={undefined} dense button>
+            <ListItemIcon>
+              <Checkbox edge="start" tabIndex={-1} disableRipple />
+            </ListItemIcon>
+            <ListItemText primary={"Debit card"} />
+          </ListItem>
+        </List>
+      </Grid>
+      <Grid item md={4}>
+        <Button
+          className={classes.checkout}
+          size={"large"}
+          fullWidth={true}
+          variant={"outlined"}
+          color="primary"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Checkout
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
 
-export default App;
+export { CheckoutApp };

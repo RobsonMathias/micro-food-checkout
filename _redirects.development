@@ -1,0 +1,2 @@
+/checkout/* /:splat  200
+/preview/* /index.html  200
