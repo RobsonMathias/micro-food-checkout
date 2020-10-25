@@ -7,6 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Checkbox from "@material-ui/core/Checkbox";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { StyleProvider } from "./components";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -25,35 +26,37 @@ const useStyles = makeStyles(() =>
 function CheckoutApp() {
   const classes = useStyles();
   return (
-    <Grid container>
-      <Grid item md={8}>
-        <List className={classes.root}>
-          <ListItem role={undefined} dense button>
-            <ListItemIcon>
-              <Checkbox edge="start" tabIndex={-1} disableRipple />
-            </ListItemIcon>
-            <ListItemText primary={"Credit card"} />
-          </ListItem>
-          <ListItem role={undefined} dense button>
-            <ListItemIcon>
-              <Checkbox edge="start" tabIndex={-1} disableRipple />
-            </ListItemIcon>
-            <ListItemText primary={"Debit card"} />
-          </ListItem>
-        </List>
+    <StyleProvider>
+      <Grid container>
+        <Grid item md={8}>
+          <List className={classes.root}>
+            <ListItem role={undefined} dense button>
+              <ListItemIcon>
+                <Checkbox edge="start" tabIndex={-1} disableRipple />
+              </ListItemIcon>
+              <ListItemText primary={"Credit card"} />
+            </ListItem>
+            <ListItem role={undefined} dense button>
+              <ListItemIcon>
+                <Checkbox edge="start" tabIndex={-1} disableRipple />
+              </ListItemIcon>
+              <ListItemText primary={"Debit card"} />
+            </ListItem>
+          </List>
+        </Grid>
+        <Grid item md={4}>
+          <Button
+            className={classes.checkout}
+            size={"large"}
+            fullWidth={true}
+            variant={"outlined"}
+            color="primary"
+          >
+            Checkout
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item md={4}>
-        <Button
-          className={classes.checkout}
-          size={"large"}
-          fullWidth={true}
-          variant={"outlined"}
-          color="primary"
-        >
-          Checkout
-        </Button>
-      </Grid>
-    </Grid>
+    </StyleProvider>
   );
 }
 
